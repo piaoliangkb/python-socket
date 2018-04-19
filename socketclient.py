@@ -1,9 +1,13 @@
 import socket
 import sys
+import os
+
+
 
 HOST = '127.0.0.1'
+# HOST = '127.0.0.1'
 # 服务器主机的IP地址
-PORT = 8866
+PORT = 8868
 # 服务器主机端口号
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -15,9 +19,14 @@ except Exception as e:
 	print("Server not found or not open")
 	sys.exit()
 
+with open("IMG_7514.jpg","rb") as file:
+	content = file.read()
+s.sendall(content)
+
+
 while True:
 	c = input("input the content you want to send:")
-	s.sendall(c.encode())
+	s.sendall("456687".encode())
 	# 发送数据
 	data = s.recv(1024)
 	# 从服务端接收1024个字节的返回信息

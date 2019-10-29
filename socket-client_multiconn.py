@@ -22,9 +22,9 @@ while True:
 
     localtime = time.asctime(time.localtime(time.time()))
     data = input()
-    data = (data + " at {}".format(time.time())).encode("utf-8")
+    data = (data + " at time [{}]".format(time.time())).encode("utf-8")
     tcpClientSocket.send(data)
-    print("finish sending data at time {}".format(time.time()))
+    print("finish sending data at time [{}]".format(time.time()))
 
     # recvdata = tcpClientSocket.recv(1024)
     # print("data received : {} at time {}".format(recvdata, time.time()))

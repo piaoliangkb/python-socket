@@ -16,10 +16,19 @@ class TCPHandler(socketserver.BaseRequestHandler):
 
         while True:
             self.data = self.request.recv(1024)
+
+            recvtime = float(time.time())
+            sendtime = float(self.data[-18:])
+
+            print(recvtime, " ", sendtime)
+
             if not self.data:
                 break
-            print("receive data [{}] from {} at {}".format(
-                self.data, self.client_address, time.time()))
+            print("receive data [{}] from {} at time [{}]".format(
+                self.data, self.client_address, recvtime))
+
+            delay = recvtime - sendtime
+            print("time delay is {}ms".format(delay * 1000))
 
             # return upper data from requeste
             # self.request.sendall(self.data.upper())

@@ -19,7 +19,7 @@ class TCPHandler(socketserver.BaseRequestHandler):
             if not self.data:
                 break
             print("receive data [{}] from {} at {}".format(
-                self.data, self.client_address, int(round(time.time() * 1000))))
+                self.data, self.client_address, time.time()))
 
             # return upper data from requeste
             # self.request.sendall(self.data.upper())
@@ -33,6 +33,6 @@ class ThreadTCPserver(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 
 if __name__ == "__main__":
-    HOST, PORT = "0.0.0.0", 9996
+    HOST, PORT = "192.168.120.1", 9996
     server = ThreadTCPserver((HOST, PORT), TCPHandler)
     server.serve_forever()

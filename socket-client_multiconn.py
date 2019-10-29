@@ -24,7 +24,7 @@ while True:
     data = input()
     data = (data + " at {}".format(time.time())).encode("utf-8")
     tcpClientSocket.send(data)
-    print("finish sending data at time {}".format(int(round(time.time() * 1000))))
+    print("finish sending data at time {}".format(time.time()))
 
     # recvdata = tcpClientSocket.recv(1024)
     # print("data received : {} at time {}".format(recvdata, time.time()))

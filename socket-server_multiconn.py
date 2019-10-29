@@ -7,6 +7,7 @@
 @reference: https://stackoverflow.com/questions/8627986/how-to-keep-a-socket-open-until-client-closes-it
 '''
 import socketserver
+import time
 
 
 class TCPHandler(socketserver.BaseRequestHandler):
@@ -17,9 +18,12 @@ class TCPHandler(socketserver.BaseRequestHandler):
             self.data = self.request.recv(1024)
             if not self.data:
                 break
-            print("received data : ", self.data, " ", self.client_address)
+            localtime = time.asctime(time.localtime(time.time()))
+            print("receive data [{}] from {} at {}".fotmat(
+                self.data, self.client_address, localtime))
+
             # return upper data from requeste
-            self.request.sendall(self.data.upper())
+            # self.request.sendall(self.data.upper())
 
 
 class ThreadTCPserver(socketserver.ThreadingMixIn, socketserver.TCPServer):
@@ -33,4 +37,3 @@ if __name__ == "__main__":
     HOST, PORT = "0.0.0.0", 9996
     server = ThreadTCPserver((HOST, PORT), TCPHandler)
     server.serve_forever()
- 

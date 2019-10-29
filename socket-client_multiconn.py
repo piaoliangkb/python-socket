@@ -25,8 +25,8 @@ while True:
     data = (data + " at {}".format(localtime)).encode("utf-8")
     tcpClientSocket.send(data)
 
-    recvdata = tcpClientSocket.recv(1024)
-    print("data received : ", recvdata)
+    # recvdata = tcpClientSocket.recv(1024)
+    # print("data received : {} at time {}".format(recvdata, time.time()))
 
 
 # 关闭套接字

@@ -14,7 +14,7 @@ tcpClientSocket = socket(AF_INET, SOCK_STREAM)
 # tcpClientSocket.setsockopt(IPPROTO_TCP, TCP_KEEPCNT, 5)
 
 # 链接服务器
-serAddr = ('127.0.0.1', 9996)
+serAddr = ('192.168.120.3', 9996)
 tcpClientSocket.connect(serAddr)
 
 

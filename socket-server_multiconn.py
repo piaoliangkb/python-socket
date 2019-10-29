@@ -19,7 +19,7 @@ class TCPHandler(socketserver.BaseRequestHandler):
             if not self.data:
                 break
             localtime = time.asctime(time.localtime(time.time()))
-            print("receive data [{}] from {} at {}".fotmat(
+            print("receive data [{}] from {} at {}".format(
                 self.data, self.client_address, localtime))
 
             # return upper data from requeste

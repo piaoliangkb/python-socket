@@ -18,9 +18,8 @@ class TCPHandler(socketserver.BaseRequestHandler):
             self.data = self.request.recv(1024)
             if not self.data:
                 break
-            localtime = time.asctime(time.localtime(time.time()))
             print("receive data [{}] from {} at {}".format(
-                self.data, self.client_address, localtime))
+                self.data, self.client_address, int(round(time.time() * 1000)))
 
             # return upper data from requeste
             # self.request.sendall(self.data.upper())

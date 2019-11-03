@@ -18,7 +18,7 @@ class TCPHandler(socketserver.BaseRequestHandler):
             self.data = self.request.recv(1024)
 
             recvtime = float(time.time())
-            sendtime = float(self.data[-18:])
+            sendtime = float(self.data[-19:-1])
 
             print(recvtime, " ", sendtime)
 

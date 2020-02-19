@@ -4,7 +4,7 @@
 @Author: piaoliangkb
 @Date: 2019-04-18 14:54:34
 @LastEditTime: 2019-04-18 16:15:01
-@reference: https://stackoverflow.com/questions/8627986/how-to-keep-a-socket-open-until-client-closes-it
+@Reference: https://stackoverflow.com/questions/8627986/how-to-keep-a-socket-open-until-client-closes-it
 '''
 import socketserver
 import time
@@ -20,15 +20,14 @@ class TCPHandler(socketserver.BaseRequestHandler):
             recvtime = float(time.time())
             sendtime = float(self.data[-19:-1])
 
-            print(recvtime, " ", sendtime)
+            print(f"{recvtime} {sendtime}")
 
             if not self.data:
                 break
-            print("receive data [{}] from {} at time [{}]".format(
-                self.data, self.client_address, recvtime))
+            print(f"receive data [{self.data}] from {self.client_address} at time [{recvtime}]")
 
             delay = recvtime - sendtime
-            print("time delay is {}ms".format(delay * 1000))
+            print(f"time delay is {delay*1000}ms")
 
             # return upper data from requeste
             # self.request.sendall(self.data.upper())
@@ -38,7 +37,7 @@ class ThreadTCPserver(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
     def __init__(self, ipport, tcphandleclass):
         socketserver.TCPServer.__init__(self, ipport, tcphandleclass)
-        print("listrning on ", ipport)
+        print(f"listrning on {ipport}")
 
 
 if __name__ == "__main__":

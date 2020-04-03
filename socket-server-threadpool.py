@@ -1,6 +1,7 @@
 from socket import AF_INET, SOCK_STREAM, socket
 from concurrent.futures import ThreadPoolExecutor
 
+# A server side client to response user's message.
 def echo_client(sock, client_addr):
     """
     Handle a client connection

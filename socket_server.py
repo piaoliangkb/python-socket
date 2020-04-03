@@ -11,10 +11,13 @@ tcpSerSocket.bind(address)
 # 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了
 tcpSerSocket.listen(5)
 
-
-# 如果有新的客户端来链接服务器，那么就产生一个信心的套接字专门为这个客户端服务器
-# newSocket用来为这个客户端服务
-# tcpSerSocket就可以省下来专门等待其他新客户端的链接
+# https://docs.python.org/3/library/socket.html#socket-objects
+#
+# socket.accept() returns a tuple (conn, address)
+# where conn is a new socket object useable to send 
+# and receive data on the connection, address is the 
+# address bound to the socket on the other hand of the 
+# connection.
 newSocket, clientAddr = tcpSerSocket.accept()
 
 while True:
@@ -35,8 +38,5 @@ while True:
         # newSocket.close()
         # break
 
-
 # 关闭监听套接字，只要这个套接字关闭了，就意味着整个程序不能再接收任何新的客户端的连接
 tcpSerSocket.close()
-
-
